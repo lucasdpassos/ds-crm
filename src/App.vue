@@ -6,7 +6,7 @@
       dark
       style="display:flex;flex-direction:row;justify-content:center;"
     >
-    <v-app-bar-title>Tem De Tudo</v-app-bar-title>
+    <v-title>Loja Tem De Tudo</v-title>
     </v-app-bar>
 
     <v-main>

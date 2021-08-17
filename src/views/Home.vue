@@ -1,10 +1,11 @@
 <template>
   <div class="home">
     
-    <v-btn>Produtos</v-btn>
-    <v-btn>Clientes</v-btn>
-    <v-btn>Vendas</v-btn>
-   
+    <div style="display:flex;flex-direction:row;justify-content:space-around;height:500px;align-items:center;">
+    <v-btn color="primary">Produtos</v-btn>
+    <v-btn color="primary">Clientes</v-btn>
+    <v-btn color="primary">Vendas</v-btn>
+   </div> 
   </div>
 </template>
 
