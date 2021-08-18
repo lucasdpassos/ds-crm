@@ -8,29 +8,14 @@
             Nome
           </th>
           <th class="text-left">
-            Descrição
+            Endereço
           </th>
           <th class="text-left">
-            Marca
+            Compras
           </th>
           <th class="text-left">
-            Fornecedor
-          </th>
-          <th class="text-left">
-            Classe
-          </th>
-          <th class="text-left">
-            Custo
-          </th>
-          <th class="text-left">
-            Valor de Venda
-          </th>
-          <th class="text-left">
-            Estoque
-          </th>
-          <th class="text-left">
-            Na loja
-          </th>
+            Telefone
+          </th>        
         </tr>
       </thead>
       <tbody>
@@ -38,15 +23,10 @@
           v-for="item in info"
           :key="item.product_nome"
         >
-          <td>{{ item.product_nome }}</td>
-          <td>{{ item.product_desc }}</td>
-          <td>{{ item.product_marca }}</td>
-          <td>{{ item.product_forn }}</td>
-          <td>{{ item.product_class }}</td>
-          <td>{{ item.product_custo }}</td>
-          <td>{{ item.product_venda }}</td>
-          <td>{{ item.product_estoque }}</td>
-          <td>{{ item.product_loja }}</td>
+          <td>{{ item.customer_nome }}</td>
+          <td>{{ item.customer_end }}</td>
+          <td>{{ item.customer_buys }}</td>
+          <td>{{ item.customer_tel }}</td>         
         </tr>
       </tbody>
     </template>
@@ -73,56 +53,27 @@
 
       <v-card>
         <v-card-title class="text-h5 grey lighten-2">
-          Cadastrar novo produto
+          Cadastrar novo cliente
         </v-card-title>
 
         <div style="display:flex;align-items:center;justify-content:center;">
         <div style="width:300px;">
         <v-text-field
-            v-model="product.product_nome"           
-            label="Nome do Produto"
+            v-model="customer.customer_nome"           
+            label="Nome do Cliente"
             required           
     ></v-text-field>
         <v-text-field
-            v-model="product.product_desc"           
-            label="Descrição"
+            v-model="customer.customer_end"           
+            label="Endereço"
             required           
     ></v-text-field>
         <v-text-field
-            v-model="product.product_marca"           
-            label="Marca"
+            v-model="customer.customer_tel"           
+            label="Telefone"
             required           
     ></v-text-field>
-        <v-text-field
-            v-model="product.product_forn"           
-            label="Fornecedor"
-            required           
-    ></v-text-field>
-        <v-text-field
-            v-model="product.product_class"           
-            label="Classificação"
-            required           
-    ></v-text-field>
-        <v-text-field
-            v-model="product.product_custo"           
-            label="Custo de compra"
-            required           
-    ></v-text-field>
-        <v-text-field
-            v-model="product.product_venda"           
-            label="Preço de Venda"
-            required           
-    ></v-text-field>      
-        <v-text-field
-            v-model="product.product_estoque"           
-            label="Quantidade em estoque"
-            required           
-    ></v-text-field>
-        <v-text-field
-            v-model="product.product_loja"           
-            label="Quantidade na loja"
-            required           
-    ></v-text-field>
+      
 </div>
 </div>
         <v-divider></v-divider>
@@ -156,17 +107,11 @@ import axios from 'axios'
       return {
         dialog: false,
         result: "",
-        product: {
-            product_id:3,
-            product_nome: "",
-            product_desc: "",
-            product_marca: "",
-            product_forn: "",
-            product_class:"",
-            product_custo:0,
-            product_venda:0,
-            product_estoque:0,
-            product_loja:0
+        customer: {
+           id:2,
+           customer_nome:"",
+           customer_end:"",
+           customer_tel:0
         },
         info: null,
         desserts: [
@@ -214,7 +159,7 @@ import axios from 'axios'
       }
     },
     mounted () {
-    axios.get('http://localhost:5588/api/all')
+    axios.get('http://localhost:5588/api/allcustomers')
         .then(res => (this.info = res.data.rows))
         console.log(this.info)
         .catch(error => console.log(error))
