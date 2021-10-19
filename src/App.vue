@@ -2,16 +2,39 @@
   <v-app>
     <v-app-bar
       app
-      color="primary"
+      color="white"
       dark
-      style="display:flex;flex-direction:row;justify-content:center;"
+      style="display:flex;flex-direction:row;justify-content:center;align-items:center;"
+      prominent
     >
-    <v-title>Loja Tem De Tudo</v-title>
+    <div style="display:flex;justify-content:center;align-items:center;">
+    <v-img
+    src="./assets/logo-ds.png"
+    width=120
+    height=100
+     />
+    <v-text style="color:#000B44">DS - CRM</v-text>
+    </div>
     </v-app-bar>
-
+   
     <v-main>
+      
     <router-view></router-view>
+    <div style="display:flex;flex-direction:row;">
+     <v-img
+    src="./assets/housesPattern.png"
+    width=50%
+    height=100px   
+     />
+     <v-img
+    src="./assets/housesPattern.png"
+    width=50%
+    height=100px   
+     />
+    </div>
+
     </v-main>
+    
   </v-app>
 </template>
 
