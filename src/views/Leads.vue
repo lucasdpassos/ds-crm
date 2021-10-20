@@ -33,11 +33,9 @@
           <td>{{ item.contato }}</td>
           <td>{{ item.data_entrada }}</td>
           <td>{{ item.origem }}</td>
-          <td>{{ item.Corretor }}</td>
-          <td>{{ item.status }}</td>
-          <v-btn style="color:azure" color="green"><v-icon>mdi-phone</v-icon></v-btn>
-          <v-btn style="color:azure" color="amber"><v-icon>mdi-alert</v-icon></v-btn>
-          
+          <td>{{ item.corretor }}</td>
+          <td>{{ item.status }}</td>      
+                                       
         </tr>
       </tbody>
     </template>
@@ -61,7 +59,7 @@
           Cadastro Manual
         </v-btn>
       </template>
-
+     
       <v-card>
         <v-card-title class="text-h5 grey lighten-2">
           Cadastro Manual de Lead
@@ -203,6 +201,7 @@
 
 
   </div>
+
   <div class="text-center">
     <v-dialog
       v-model="dialog4"
@@ -242,11 +241,28 @@
 
 
   </div>
+  <div class="text-center">
+    <v-dialog
+      v-model="dialog5"
+      width="500"
+      
+    >
+      <call-alert />
+
+    </v-dialog>
 
 
 
-   <div style="height:100px;display:flex;justify-content:center;align-items:center;">
-    <v-btn @click="getProduct()" >Voltar</v-btn>
+  </div>
+
+
+  
+   <div style="height:300px;display:flex;justify-content:center;align-items:center;flex-direction:column">
+
+     <v-btn @click="alertCall()" color="#000B44" style="margin:15px;color:azure;"><v-icon style="padding:10px;">mdi-phone</v-icon> Registrar Atendimento</v-btn>
+
+
+    <v-btn style="margin:30px;" @click="$router.push('/')"  >Voltar</v-btn>
   
     </div>
     
@@ -258,6 +274,9 @@
 
 <script>
 import axios from 'axios'
+import CallAlert from '../components/CallAlert.vue'
+
+
   export default {
     data () {
       return {
@@ -265,6 +284,8 @@ import axios from 'axios'
         dialog2: false,
         dialog3: false,
         dialog4: false,
+        dialog5: false,
+        nome_lead: "",
         result: "",
         product: {
             
@@ -274,18 +295,22 @@ import axios from 'axios'
        
         },
         info: null,       
+        names: []
         
       }
     },
+    components: {
+      CallAlert
+    },
     mounted () {
-    axios.get('http://localhost:80/all')
+    axios.get('https://ds-crm-backend.herokuapp.com/all')
         .then(res => (this.info = res.data))
         console.log(this.info)
-        .catch(error => console.log(error))
+        
   },
   methods: {
       getProduct() {
-          axios.get('http://localhost:80/all')
+          axios.get('https://ds-crm-backend.herokuapp.com/all')
         .then(res => (this.info = res.data))
         console.log(this.info)
         .catch(error => console.log(error))
@@ -302,6 +327,12 @@ import axios from 'axios'
       },
       closeHelp() {
         this.dialog4 = false
+      },
+      alertCall() {
+        this.dialog5 = true
+      },
+      closeDialog() {
+        this.dialog5 = false
       }
   }
   }

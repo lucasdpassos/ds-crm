@@ -2,9 +2,8 @@
   <div class="home">
     
     <div style="display:flex;flex-direction:row;justify-content:space-around;height:140px;align-items:center;">
-    <v-btn @click="$router.push('leads')" color="#000B44" style="color:azure;">Acessar Leads</v-btn>
-    <v-btn @click="$router.push('customers')"  color="#000B44" style="color:azure;" >Equipe</v-btn>
-    <v-btn color="#000B44" style="color:azure;">Vendas</v-btn>
+    <v-btn @click="$router.push('leads')" color="#000B44" style="color:azure;">Acessar Leads</v-btn>  
+    
     <v-btn color="#000B44" style="color:azure;">Análise de Documentos</v-btn>
     <v-btn color="#000B44" style="color:azure;">Treinamentos</v-btn>
     
