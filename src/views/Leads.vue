@@ -68,18 +68,18 @@
         <div style="display:flex;align-items:center;justify-content:center;">
         <div style="width:300px;">
         <v-text-field
-            v-model="product.product_nome"           
+            v-model="newLead.nome"           
             label="Nome"
             required           
     ></v-text-field>
         <v-text-field
-            v-model="product.product_ctt"           
+            v-model="newLead.contato"           
             label="Contato"
             required           
     ></v-text-field>
         <v-text-field
-            v-model="product.product_data"           
-            label="Data de Entrada"
+            v-model="newLead.corretor"           
+            label="Corretor"
             required           
     ></v-text-field>
        
@@ -92,7 +92,7 @@
           <v-btn
             color="primary"
             text
-            @click="sendProduct()"
+            @click="addLead()"
           >
             Cadastrar
           </v-btn>
@@ -287,11 +287,14 @@ import CallAlert from '../components/CallAlert.vue'
         dialog5: false,
         nome_lead: "",
         result: "",
-        product: {
+        newLead: {
             
-            product_nome: "",
-            product_ctt: "",
-            product_data:""
+            nome: "",
+            contato: "",
+            data: "21/10/2021",
+            origem:"Cadastro Manual",
+            corretor: "",
+            status: "Interessado"
        
         },
         info: null,       
@@ -333,6 +336,21 @@ import CallAlert from '../components/CallAlert.vue'
       },
       closeDialog() {
         this.dialog5 = false
+      },
+        async addLead() {      
+       
+     await axios.post('http://localhost:8080/add', this.newLead, {
+       headers: {
+            "Content-Type":"application/json"
+        }
+      }).then(res => {
+        console.log(res);
+        this.dialog = false
+        alert('Novo Lead adicionado!')
+        location.reload();
+      }).catch(err => {
+        console.log(err.response);
+      });
       }
   }
   }

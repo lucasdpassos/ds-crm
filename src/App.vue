@@ -10,10 +10,10 @@
     <div style="display:flex;justify-content:center;align-items:center;">
     <v-img
     src="./assets/logo-ds.png"
-    width=120
-    height=100
+    width=150
+    height=130
      />
-    <v-text style="color:#000B44">DS - CRM</v-text>
+   
     </div>
     </v-app-bar>
    

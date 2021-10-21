@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Leads from '../views/Leads.vue'
-import Customers from '../views/Customers.vue'
+import Trainings from '../views/Trainings.vue'
 
 Vue.use(VueRouter)
 
@@ -18,9 +18,9 @@ const routes = [
     component: Leads
   },
   {
-    path: '/customers',
-    name: 'customers',
-    component: Customers
+    path: '/trainings',
+    name: 'trainings',
+    component: Trainings
   },
   {
     path: '/about',
